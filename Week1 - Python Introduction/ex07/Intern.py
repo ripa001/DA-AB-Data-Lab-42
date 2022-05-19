@@ -10,7 +10,7 @@ class Intern:
 			return ("This is the worst coffee you ever tasted")
 
 	def work(self):
-		raise Exception("I'm just an intern, I can't do that...")
+		raise Exception("\033[0;31mI’m just an intern, I can’t do that...\033[0m")
 
 	def make_coffee(self):
 		return(self.Coffee())

@@ -21,5 +21,10 @@ d = {
 'Burton' : '1939',
 }
 
-y = list(d.values()).sort()
-n = list(d.keys())
+d = dict(sorted(d.items()))
+s = sorted(list(d.keys()))
+for key in d:
+    print("{}".format(key))
+print()
+for v in s:
+    print("{}".format(v))
