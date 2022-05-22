@@ -22,23 +22,23 @@ class CoffeeMachine:
 		if self.used == 10:
 			self.BrokenMachineException()
 		self.used += 1
-		if (random.randint(0,7) % 7) == 0:
+		if (random.randint(2,3) % 2) == 0:
 			return self.EmptyCup()
 		else:
 			return drink
 
-a = beverages.HotBeverage("coffe", 0.40, "A coffee, to stay awake.")
-b = beverages.HotBeverage("tea", 0.30)
-c = beverages.HotBeverage("chocolate", 0.50, "Chocolate, sweet chocolate...")
-d = beverages.HotBeverage("cappuccino", 0.45, "Un po' di Italia nella sua tazza!")
-m = CoffeeMachine()
-list = [a, b, c, d]
-
-for _ in range(25):
-	num = random.randint(0, 3)
-	try:
-		print("\033[0;32mYou got:\033[0m\n{}".format(m.serve(list[num])))
-	except Exception as ex:
-		print(ex)
-		m.repair()
-		print("\033[0;32mThe machine has been repaired.\033[0m")
+if __name__ == "__main__":
+	a = beverages.HotBeverage()
+	b = beverages.Coffee()
+	c = beverages.Tea()
+	d = beverages.Chocolate()
+	e = beverages.Cappuccino()
+	coffee_machine = CoffeeMachine()
+	i = [a, b, c, d, e] * 4
+	for _ in i:
+		try:
+			print("\033[0;32mYou got:\033[0m\n{}".format(coffee_machine.serve(_)))
+		except Exception as ex:
+			print(ex)
+			coffee_machine.repair()
+			print("\033[0;32mThe machine has been repaired.\033[0m\n")

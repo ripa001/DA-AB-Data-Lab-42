@@ -21,10 +21,11 @@ d = {
 'Burton' : '1939',
 }
 
-d = dict(sorted(d.items()))
-s = sorted(list(d.keys()))
-for key in d:
-    print("{}".format(key))
-print()
-for v in s:
-    print("{}".format(v))
+s = sorted(list(d.items()), key = lambda x: x[1])
+t = sorted([(x[1], x[0]) for x in s])
+print("Sorted by year\n")
+for name, year in s:
+    print("{}".format(name))
+print("\n\nYear and alpahbetic order\n")
+for year, name in t:
+    print("{}".format(name))
