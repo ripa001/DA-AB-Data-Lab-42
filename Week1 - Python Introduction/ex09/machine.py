@@ -23,16 +23,11 @@ class CoffeeMachine:
 		if (random.randint(2,3) % 2) == 0:
 			return self.EmptyCup()
 		else:
-			return drink
+			return drink()
 
 if __name__ == "__main__":
-	a = beverages.HotBeverage()
-	b = beverages.Coffee()
-	c = beverages.Tea()
-	d = beverages.Chocolate()
-	e = beverages.Cappuccino()
 	coffee_machine = CoffeeMachine()
-	i = [a, b, c, d, e] * 4
+	i = [beverages.HotBeverage, beverages.Coffee, beverages.Tea, beverages.Chocolate, beverages.Cappuccino] * 4
 	for _ in i:
 		try:
 			print("\033[0;32mYou got:\033[0m\n{}".format(coffee_machine.serve(_)))
