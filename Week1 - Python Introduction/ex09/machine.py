@@ -7,10 +7,8 @@ class CoffeeMachine:
 		self.used = 0
 
 	class EmptyCup(beverages.HotBeverage):
-		def __init__(self):
-			self.name = "empty cup"
-			self.price = 0.90
-			self.desc = "An empty cup?! Gimme my money back!"
+		def __init__(self, name="empty cup", price=0.3, desc="An empty cup?! Gimme my money back!") -> None:
+			super().__init__(name, price, desc)
 
 	def BrokenMachineException(self):
 		raise Exception("\033[0;31mThis coffee machine has to be repaired.\033[0m")
