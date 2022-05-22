@@ -10,15 +10,16 @@ class CoffeeMachine:
 		def __init__(self, name="empty cup", price=0.3, desc="An empty cup?! Gimme my money back!") -> None:
 			super().__init__(name, price, desc)
 
-	def BrokenMachineException(self):
-		raise Exception("\033[0;31mThis coffee machine has to be repaired.\033[0m")
+	class BrokenMachineException(Exception):
+		def __init__(self, *args: object) -> None:
+			super().__init__("\033[0;31mThis coffee machine has to be repaired.\033[0m")
 
 	def repair(self):
 		self.used = 0
 
 	def serve(self, drink):
 		if self.used == 10:
-			self.BrokenMachineException()
+			raise self.BrokenMachineException()
 		self.used += 1
 		if (random.randint(2,3) % 2) == 0:
 			return self.EmptyCup()
@@ -31,7 +32,7 @@ if __name__ == "__main__":
 	for _ in i:
 		try:
 			print("\033[0;32mYou got:\033[0m\n{}".format(coffee_machine.serve(_)))
-		except Exception as ex:
+		except coffee_machine.BrokenMachineException as ex:
 			print(ex)
 			coffee_machine.repair()
 			print("\033[0;32mThe machine has been repaired.\033[0m\n")
