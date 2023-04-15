@@ -1,0 +1,6 @@
+Removing neurobonus
+
+Adding MongoDB exercise
+
+Create a db to store historical data from products sales
+
