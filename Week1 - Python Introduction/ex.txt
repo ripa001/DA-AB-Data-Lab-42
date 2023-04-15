@@ -1,0 +1,54 @@
+Exercise on Dictionaries:
+Create a program that creates a dictionary of grocery items and their prices, then prompts the user to input an item and outputs the price of that item.
+python
+Copy code
+
+groceries = {"apples": 1.99, "bananas": 0.99, "milk": 2.49, "bread": 1.79}
+item = input("Enter a grocery item: ")
+if item in groceries:
+    print("The price of " + item + " is $" + str(groceries[item]))
+else:
+    print("That item is not in the grocery list.")
+
+
+Exercise on Tuples and Sets:
+Create a program that takes a list of numbers and outputs a tuple containing the even numbers and a set containing the odd numbers.
+scss
+Copy code
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = tuple([num for num in numbers if num % 2 == 0])
+odd_numbers = set([num for num in numbers if num % 2 == 1])
+print(even_numbers)
+print(odd_numbers)
+
+Exercise on Nested Lists:
+Create a program that takes a nested list of integers and calculates the sum of all the numbers in the list.
+lua
+Copy code
+numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+total = 0
+for row in numbers:
+    for num in row:
+        total += num
+print(total)
+
+Exercise on Dictionaries and Loops:
+Create a program that takes a string and outputs a dictionary containing the frequency of each character in the string.
+lua
+Copy code
+string = "hello world"
+frequency = {}
+for char in string:
+    if char in frequency:
+        frequency[char] += 1
+    else:
+        frequency[char] = 1
+print(frequency)
+
+Exercise on List Comprehensions:
+Create a program that takes a list of integers and outputs a new list that contains only the unique numbers in the original list. Use a list comprehension to accomplish this.
+scss
+Copy code
+numbers = [1, 2, 3, 4, 2, 3, 5, 6, 1, 7]
+unique_numbers = list(set([num for num in numbers if numbers.count(num) == 1]))
+print(unique_numbers)
