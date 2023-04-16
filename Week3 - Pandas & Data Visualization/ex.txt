@@ -1,0 +1,41 @@
+Exercise: Create a program that connects to a MongoDB database, creates a collection with an index, inserts multiple documents into the collection, performs a query to retrieve documents that match a certain condition, updates a document in the collection, and deletes a document from the collection.
+
+makefile
+Copy code
+import pymongo
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+database = client["mydatabase"]
+collection = database["mycollection"]
+
+# Create a collection with an index
+collection.create_index("name")
+
+# Insert multiple documents into the collection
+documents = [
+    {"name": "John", "age": 30},
+    {"name": "Jane", "age": 25},
+    {"name": "Bob", "age": 35},
+    {"name": "Mary", "age": 40},
+]
+result = collection.insert_many(documents)
+print("Inserted", len(result.inserted_ids), "documents")
+
+# Query the collection to retrieve documents that match a certain condition
+query = {"age": {"$gt": 30}}
+documents = collection.find(query)
+print("Documents with age > 30:")
+for document in documents:
+    print(document)
+
+# Update a document in the collection
+query = {"name": "John"}
+new_value = {"$set": {"age": 35}}
+result = collection.update_one(query, new_value)
+print(result.modified_count, "document updated")
+
+# Delete a document from the collection
+query = {"name": "Jane"}
+result = collection.delete_one(query)
+print(result.deleted_count, "document deleted")
